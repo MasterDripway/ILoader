@@ -78,7 +78,7 @@ class module:
 
 
 def main():
-    ILoader.loadFiles([])
+    ILoader.loadFiles(["utility.py", "test.py"])
     ILoader.disablePerformanceStats()
     ILoader.start()
     ILoader.getReourceValues()
