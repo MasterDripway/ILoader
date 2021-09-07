@@ -52,7 +52,7 @@ class ILoader:
             else:
                 print(f'Module {modulename} is set to pkg mode.')
     @staticmethod
-    def getReourceValues(cls):
+    def getReourceValues():
         rsrcs = {'cpu' : psutil.cpu_percent(), 'mem' : psutil.virtual_memory().percent}
         for i in rsrcs:
             print(i + ': ' + str(rsrcs[i]) + '%')
@@ -78,7 +78,7 @@ class module:
 
 
 def main():
-    ILoader.loadFiles(["utility.py", "test.py"])
+    ILoader.loadFiles(exclude=["utility.py", "test.py", "shellui.py"])
     ILoader.disablePerformanceStats()
     ILoader.start()
     ILoader.getReourceValues()
