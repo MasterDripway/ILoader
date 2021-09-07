@@ -36,5 +36,5 @@ def getPage(query : str, disambiguation : int = -1):
 
 def start():
     setLang('en')
-    print(lookupTitles('Lima'))
-    print(getSummary("Lima", 0))
+    print(lookupTitles('mythology (greek)'))
+    print(getSummary("mythology (greek)", 0))
