@@ -1,5 +1,5 @@
 #!py -3.9
-import os, platform,  psutil
+import os, platform, psutil
 opsys = platform.system()
 if opsys == 'Windows':
     import cProfile
@@ -18,6 +18,7 @@ class ILoader:
     def getFiles(cls, exclude=[]):
         for r, d, f in os.walk('mods'):
             for fi in f:
+                print(fi)
                 nf = r + '\\' + fi
                 if os.path.isfile(nf) and fi not in exclude:
                     cls.loaded.append([r, fi])
