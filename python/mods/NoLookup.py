@@ -8,6 +8,10 @@ class OrderedPage:
     sequenceDict : dict[str, str]
     def __repr__(self):
         return "".join([f'{i}:\n\n{j}' for i,j in self.sequenceDict.items()])
+    def __getitem__(self, i):
+        return self.sequenceDict[i]
+    def __setitem__(self, k, v):
+        self.sequenceDict[k] = v
 
 
 
