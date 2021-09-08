@@ -35,6 +35,9 @@ def getPage(query : str, disambiguation : int = -1):
     
 
 def start():
-    setLang('en')
-    print(lookupTitles('mythology (greek)'))
-    print(getSummary("mythology (greek)", 0))
+    q = 'mythology (roman)'
+    setLang('en-us')
+    #print(lookupTitles('mythology (roman)'))
+    #print(getSummary("mythology (roman)", 0))
+    pg = getPage(q, 0)
+    print(pg.images)
