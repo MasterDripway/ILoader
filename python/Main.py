@@ -80,6 +80,7 @@ class module:
 
 def main():
     ILoader.loadFiles(exclude=["utility.py", "test.py", "shellui.py"])
+    ILoader.disablePerformanceStats()
     ILoader.start()
     ILoader.getReourceValues()
 

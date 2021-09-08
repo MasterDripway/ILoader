@@ -1,5 +1,5 @@
 import wikipedia
-
+import re
 
 def setLang(pfx : str):
     if pfx in wikipedia.languages():
@@ -32,7 +32,16 @@ def getPage(query : str, disambiguation : int = -1):
             return getPage(excep.options[disambiguation], disambiguation=disambiguation)
     except wikipedia.exceptions.PageError:
         print("No pages match the suggested name. Terminating...")
-    
+
+def splitPage(pg : wikipedia.WikipediaPage):
+    fmt = '====|===|=='
+    match = re.split(fmt, pg.content)
+    match.insert(0, 'Summary')
+    nm = {}
+    for x in range(0, len(match), 2):
+        nm[match[x]] = match[x+1]
+    return nm
+      
 
 def start():
     q = 'Donald Trump'
@@ -40,4 +49,4 @@ def start():
     #print(lookupTitles(q))
     #print(getSummary(q, 0))
     pg = getPage(q, 0)
-    print(pg.content)
+    splitPage(pg)
