@@ -35,9 +35,9 @@ def getPage(query : str, disambiguation : int = -1):
     
 
 def start():
-    q = 'mythology (roman)'
+    q = 'Donald Trump'
     setLang('en-us')
-    #print(lookupTitles('mythology (roman)'))
-    #print(getSummary("mythology (roman)", 0))
+    #print(lookupTitles(q))
+    #print(getSummary(q, 0))
     pg = getPage(q, 0)
-    print(pg.images)
+    print(pg.content)
