@@ -49,4 +49,4 @@ def start():
     #print(lookupTitles(q))
     #print(getSummary(q, 0))
     pg = getPage(q, 0)
-    splitPage(pg)
+    n = splitPage(pg)
