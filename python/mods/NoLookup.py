@@ -50,10 +50,10 @@ def getPage(query : str, disambiguation : int = -1):
 def splitPage(pg : wikipedia.WikipediaPage):
     fmt = '====|===|=='
     match = re.split(fmt, pg.content)
-    match.insert(0, 'Summary')
+    match.insert(0, ' Summary ')
     nm = {}
     for x in range(0, len(match), 2):
-        nm[match[x]] = match[x+1]
+        nm[match[x].strip()] = match[x+1]
     return OrderedPage(nm)
       
 
@@ -65,5 +65,5 @@ def start():
     #print(getSummary(q, 0))
     pg = getPage(q, 0)
     n = splitPage(pg)
-    print(n)
+    print(n.sequenceDict.keys())
 
