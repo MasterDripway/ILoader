@@ -1,5 +1,15 @@
 import wikipedia
 import re
+from dataclasses import dataclass
+
+
+@dataclass(frozen=False)
+class OrderedPage:
+    sequenceDict : dict[str, str]
+    def __repr__(self):
+        return "".join([f'{i}:\n\n{j}' for i,j in self.sequenceDict.items()])
+
+
 
 def setLang(pfx : str):
     if pfx in wikipedia.languages():
@@ -40,8 +50,9 @@ def splitPage(pg : wikipedia.WikipediaPage):
     nm = {}
     for x in range(0, len(match), 2):
         nm[match[x]] = match[x+1]
-    return nm
+    return OrderedPage(nm)
       
+
 
 def start():
     q = 'Donald Trump'
@@ -50,3 +61,5 @@ def start():
     #print(getSummary(q, 0))
     pg = getPage(q, 0)
     n = splitPage(pg)
+    print(n)
+
