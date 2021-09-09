@@ -9,10 +9,12 @@ class OrderedPage:
     def __repr__(self):
         return "".join([f'{i}:\n\n{j}' for i,j in self.sequenceDict.items()])
     def __getitem__(self, i):
-        return self.sequenceDict[i]
+        if i in self.sequenceDict:
+            return self.sequenceDict[i]
+        else:
+            raise KeyError('There is no key with the following name: %s.' % (i,))
     def __setitem__(self, k, v):
         self.sequenceDict[k] = v
-
 
 
 def setLang(pfx : str):
@@ -50,7 +52,7 @@ def getPage(query : str, disambiguation : int = -1):
 def splitPage(pg : wikipedia.WikipediaPage):
     fmt = '====|===|=='
     match = re.split(fmt, pg.content)
-    match.insert(0, ' Summary ')
+    match.insert(0, 'Summary')
     nm = {}
     for x in range(0, len(match), 2):
         nm[match[x].strip()] = match[x+1]
@@ -65,5 +67,5 @@ def start():
     #print(getSummary(q, 0))
     pg = getPage(q, 0)
     n = splitPage(pg)
-    print(n.sequenceDict.keys())
+    print(n['Summary'])
 
