@@ -5,6 +5,7 @@ from dataclasses import dataclass
 
 @dataclass(frozen=False)
 class OrderedPage:
+    page : wikipedia.WikipediaPage
     sequenceDict : dict[str, str]
     def __repr__(self):
         return "".join([f'{i}:\n\n{j}' for i,j in self.sequenceDict.items()])
@@ -56,16 +57,19 @@ def splitPage(pg : wikipedia.WikipediaPage):
     nm = {}
     for x in range(0, len(match), 2):
         nm[match[x].strip()] = match[x+1]
-    return OrderedPage(nm)
+    return OrderedPage(pg, nm)
       
-
+def quickSearch(query : str, index : int):
+    return splitPage(getPage(lookupTitles(query)[index]))
 
 def start():
     q = 'Donald Trump'
     setLang('en-us')
     #print(lookupTitles(q))
     #print(getSummary(q, 0))
-    pg = getPage(q, 0)
-    n = splitPage(pg)
-    print(n['Summary'])
+    #pg = getPage(q, 0)
+    #n = splitPage(pg)
+    #print(n['Summary'])
+    pg = quickSearch(q, 0)
+    print(pg.page.content)
 
