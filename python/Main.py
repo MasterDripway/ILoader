@@ -1,4 +1,4 @@
-#!py -3.9.1
+#!py -3.9
 import os, platform, psutil
 opsys = platform.system()
 if opsys == 'Windows':
