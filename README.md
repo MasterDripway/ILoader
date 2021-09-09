@@ -14,6 +14,6 @@ All you have to do is create a function `start` much like a main function, which
 
 # Performance Indicators - Windows only (for now)
 
-You can enable performance stats via `ILoader.getReourceValues()` and completely disable them with  `ILoader.disablePerformanceStats()`.
+You can enable performance stats via `ILoader.getReourceValues()` (cpu && mem) and (on default) will show backend function calls which you can completely disable with  `ILoader.disablePerformanceStats()`.
 
 This will show your cpu and memory usage if left enabled.
