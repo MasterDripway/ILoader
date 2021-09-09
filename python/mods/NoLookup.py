@@ -63,7 +63,7 @@ def quickSearch(query : str, index : int):
     return splitPage(getPage(lookupTitles(query)[index]))
 
 def start():
-    q = 'Donald Trump'
+    q = 'Wikipedia'
     setLang('en-us')
     #print(lookupTitles(q))
     #print(getSummary(q, 0))
@@ -71,5 +71,5 @@ def start():
     #n = splitPage(pg)
     #print(n['Summary'])
     pg = quickSearch(q, 0)
-    print(pg.page.content)
+    print(pg)
 
